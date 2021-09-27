@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #0b2b3a;
+  --secondary-color: #ff5001;
+  --tertiary-color: #efefef;
+  --text-dark-color: #0b2b3a;
+  --text-light-color: #efefef;
+  --btn-margin: 0 0.15rem;
+  --btn-padding: 0.51rem 0.875rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav__bar {
+  color: var(--text-light-color);
+  background-image: linear-gradient(to left, #083085, #0a3076);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-icon {
+  font-size: 3rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.currency-btn {
+  padding: 0.2rem 0.575rem;
+  color: var(--tertiary-color);
+  background-color: inherit;
+  border: 1px solid var(--tertiary-color);
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.small-text {
+  font-size: 0.8rem;
+  font-weight: 200;
+  padding-right: 8px;
+  color: var(--text-light-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#section-one {
+  height: 35rem;
+  max-height: 35rem;
+  background-image: url(images/polynesia.jpeg);
+  background-size: cover;
+  background-repeat: none;
+  background-position: top;
+  display: grid;
+  place-items: center;
+}
+
+.section-btn {
+  border: none;
+  margin: var(--btn-margin);
+  padding: var(--btn-padding);
+  color: var(--text-light-color);
+  background-color: var(--secondary-color);
+  border-radius: 5px 5px 0 0;
+}
+
+.section-btn:active {
+  outline: none;
+  background-color: var(--primary-color);
+}
+
+.section-btn:focus {
+  outline: none;
+  background-color: var(--primary-color);
+}
+
+.flight-form {
+  margin: 0 0.15rem;
+  padding: 2rem 3rem;
+  color: var(--text-light-color);
+  background-color: var(--primary-color);
+  border-radius: 5px 0 5px 5px;
+}
+
+.flight-btn {
+  border: none;
+  outline: none;
+  margin: var(--btn-margin);
+  padding: var(--btn-padding);
+  color: var(--text-light-color);
+  background-color: var(--secondary-color);
 }
