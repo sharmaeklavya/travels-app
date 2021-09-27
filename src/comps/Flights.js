@@ -96,7 +96,7 @@ function Flights() {
             <div className="col-md-12">
               <form className="flight-form">
                 <div className="form-row">
-                  <div className="col">
+                  <div className="col-12 col-sm-6 col-lg-3 mb-1">
                     <label htmlFor="origin">From</label>
                     <input
                       id="origin"
@@ -105,7 +105,7 @@ function Flights() {
                       placeholder="Country, city origin"
                     />
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-sm-6 col-lg-3 mb-1">
                     <label htmlFor="destination">Going to</label>
                     <input
                       id="destination"
@@ -114,11 +114,11 @@ function Flights() {
                       placeholder="Country, city destination"
                     />
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-sm-6 col-lg-3 mb-1">
                     <label htmlFor="depart">Depart</label>
                     <input id="depart" type="date" className="form-control" />
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-sm-6 col-lg-3 mb-1">
                     <label htmlFor="return">Return</label>
                     <input id="return" type="date" className="form-control" />
                   </div>
