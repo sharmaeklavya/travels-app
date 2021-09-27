@@ -116,11 +116,21 @@ function Flights() {
                   </div>
                   <div className="col-12 col-sm-6 col-lg-3 mb-1">
                     <label htmlFor="depart">Depart</label>
-                    <input id="depart" type="date" className="form-control" />
+                    <input
+                      id="depart"
+                      type="date"
+                      className="form-control"
+                      placeholder="Departure date"
+                    />
                   </div>
                   <div className="col-12 col-sm-6 col-lg-3 mb-1">
                     <label htmlFor="return">Return</label>
-                    <input id="return" type="date" className="form-control" />
+                    <input
+                      id="return"
+                      type="date"
+                      className="form-control"
+                      placeholder="Arrival date"
+                    />
                   </div>
                 </div>
                 <div className="form-row mt-3">
