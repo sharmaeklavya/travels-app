@@ -69,6 +69,11 @@
   border-radius: 5px 0 5px 5px;
 }
 
+.flight-title {
+  font-size: 3rem;
+  font-weight: 100;
+}
+
 input[type="search"],
 input[type="date"] {
   padding-top: 1.5rem;
