@@ -9,7 +9,6 @@
 }
 
 .nav__bar {
-  color: var(--text-light-color);
   background-image: linear-gradient(to left, #083085, #0a3076);
 }
 
@@ -68,6 +67,12 @@
   color: var(--text-light-color);
   background-color: var(--primary-color);
   border-radius: 5px 0 5px 5px;
+}
+
+input[type="search"],
+input[type="date"] {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .flight-btn {
