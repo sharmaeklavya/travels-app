@@ -170,7 +170,7 @@ input[type="date"] {
 
 @media (max-width: 768px) {
   .section-one-vessel {
-    margin-top: 2re;
+    margin-top: 2rem;
     place-content: start;
   }
 }
