@@ -6,6 +6,14 @@
   --text-light-color: #efefef;
   --btn-margin: 0 0.15rem;
   --btn-padding: 0.51rem 0.875rem;
+  --title-size: 2.5rem;
+  --sub-title: 2rem;
+  --para-text: 1rem;
+  --small-text: 0.8rem;
+}
+
+body {
+  font-size: 100% !important;
 }
 
 .nav__bar {
@@ -13,11 +21,11 @@
 }
 
 .logo-icon {
-  font-size: 3rem;
+  font-size: var(--title-size);
 }
 
 .currency-btn {
-  padding: 0.2rem 0.575rem;
+  padding: var(--btn-padding);
   color: var(--tertiary-color);
   background-color: inherit;
   border: 1px solid var(--tertiary-color);
@@ -25,25 +33,23 @@
 }
 
 .small-text {
-  font-size: 0.8rem;
+  font-size: var(--small-text);
   font-weight: 200;
   padding-right: 8px;
   color: var(--text-light-color);
 }
 
 #section-one {
-  height: 35rem;
-  max-height: 35rem;
   background-image: url(images/polynesia.jpeg);
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: top;
   display: grid;
   place-items: center;
 }
 
-.section-btn {
-  border: none;
+.section-one-btn {
+  text-decoration: none;
   margin: var(--btn-margin);
   padding: var(--btn-padding);
   color: var(--text-light-color);
@@ -51,27 +57,58 @@
   border-radius: 5px 5px 0 0;
 }
 
-.section-btn:active {
-  outline: none;
+.section-one-btn:link {
+  text-decoration: none;
+  color: var(--text-light-color);
   background-color: var(--primary-color);
 }
 
-.section-btn:focus {
-  outline: none;
+.section-one-btn:hover {
+  text-decoration: none;
+  color: var(--text-light-color);
   background-color: var(--primary-color);
 }
 
-.flight-form {
-  margin: 0 0.15rem;
+.section-one-btn:focus {
+  text-decoration: none;
+  color: var(--text-light-color);
+  background-color: var(--primary-color);
+}
+
+.section-one-vessel {
+  min-height: 80vh;
+  display: grid;
+  place-content: center;
+  justify-content: stretch;
+}
+
+/* Home Component ends here */
+
+.section-one-form {
   padding: 2rem 3rem;
   color: var(--text-light-color);
   background-color: var(--primary-color);
   border-radius: 5px 0 5px 5px;
 }
 
-.flight-title {
-  font-size: 3rem;
+.section-one-title {
+  font-size: var(--title-size);
   font-weight: 100;
+}
+
+.section-one-icon {
+  animation: skew 2s infinite;
+  transform: skew(10deg);
+  animation-direction: alternate;
+}
+
+@keyframes skew {
+  0% {
+    transform: skew(10deg, 0deg);
+  }
+  100% {
+    transform: skew(-10deg, 0deg);
+  }
 }
 
 input[type="search"],
@@ -87,4 +124,53 @@ input[type="date"] {
   padding: var(--btn-padding);
   color: var(--text-light-color);
   background-color: var(--secondary-color);
+  margin-left: 1px;
+  transition: margin-left 2s ease-in-out 0.5s;
+}
+
+.flight-btn:focus {
+  outline: none;
+  margin-left: 50%;
+}
+
+.travel-btn {
+  width: 100%;
+  font-size: var(--para-text);
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  margin: 1rem 0;
+  padding: var(--btn-padding);
+  border: none;
+  border-radius: 5px;
+}
+
+.travel-btn:focus {
+  outline: none;
+}
+
+#search-city {
+  width: 12rem;
+  display: inline-block;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: var(--tertiary-color);
+}
+
+.search-city {
+  width: 15rem;
+  margin: 1px auto;
+  border-radius: 5px;
+  background-color: var(--tertiary-color);
+}
+
+.city-icon {
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .section-one-vessel {
+    margin-top: 2re;
+    place-content: start;
+  }
 }

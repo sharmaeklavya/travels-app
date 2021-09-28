@@ -1,15 +1,13 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Flights from "./comps/Flights";
-import Travels from "./comps/Travels";
+import Home from "./comps/Home.js";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Flights} exact />
-        <Route path="/travels" component={Travels} exact />
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );
