@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Currency from "./Currency";
+import axios from "axios";
 
 function Topbar() {
   const [currency, setCurrency] = useState({
@@ -14,11 +15,15 @@ function Topbar() {
 
   useEffect(() => {
     if (currency.name === null || currency.code === null)
-      setCurrency({
-        name: window.geoplugin_countryName(),
-        code: window.geoplugin_currencyCode(),
-      });
+      setCurrency({ name: "Indian Rupee", code: "INR" });
   }, [currency]);
+
+  useEffect(() => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((res) => console.log(res.data))
+      .catch((res) => console.log(res.response));
+  }, []);
 
   return (
     <>
