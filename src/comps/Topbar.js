@@ -14,13 +14,18 @@ function Topbar() {
   };
 
   useEffect(() => {
+    if (currency.name === null || currency.code === null)
+      setCurrency({ name: "Indian Rupee", code: "INR" });
+  }, [currency]);
+
+  useEffect(() => {
     axios
       .get("https://countryapi.gear.host/v1/Country/getCountries", {
         withCredentials: true,
       })
       .then((res) => console.log(res.data))
       .catch((res) => console.log(res.response));
-  }, [currency]);
+  }, []);
 
   return (
     <>
