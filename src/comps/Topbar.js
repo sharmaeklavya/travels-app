@@ -14,15 +14,12 @@ function Topbar() {
   };
 
   useEffect(() => {
-    if (currency.name === null || currency.code === null)
-      axios
-        .get("https://countryapi.gear.host/v1/Country/getCountries", {
-          withCredentials: true,
-        })
-        .then((res) =>
-          setCurrency({ name: res.data.currency_name, code: res.data.currency })
-        )
-        .catch((res) => console.log(res.response));
+    axios
+      .get("https://countryapi.gear.host/v1/Country/getCountries", {
+        withCredentials: true,
+      })
+      .then((res) => console.log(res.data))
+      .catch((res) => console.log(res.response));
   }, [currency]);
 
   return (
