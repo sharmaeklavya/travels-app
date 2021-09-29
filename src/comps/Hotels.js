@@ -1,29 +1,29 @@
 import React from "react";
 
-function Travels() {
+function Hotels() {
   return (
     <form className="section-one-form">
       <div className="form-row justify-content-center">
         <div className="col-12 mb-1">
           <h1 className="section-one-title">
             <span className="px-1">
-              <i class="fas fa-umbrella-beach section-one-icon"></i>
+              <i className="fas fa-umbrella-beach section-one-icon"></i>
             </span>
             <span className="px-2">Don't let anything stop you</span>
           </h1>
         </div>
         <div className="col-12 col-sm-6 col-lg-3 mb-1">
-          <button type="button" className="travel-btn">
+          <button type="button" className="hotels-btn">
             All
           </button>
         </div>
         <div className="col-12 col-sm-6 col-lg-3 mb-1">
-          <button type="button" className="travel-btn">
+          <button type="button" className="hotels-btn">
             India
           </button>
         </div>
         <div className="col-12 col-sm-6 col-lg-3 mb-1">
-          <button type="button" className="travel-btn">
+          <button type="button" className="hotels-btn">
             International
           </button>
         </div>
@@ -37,7 +37,7 @@ function Travels() {
               className="form-control"
               placeholder="Search your destination"
             />
-            <i class="fas fa-search city-icon"></i>
+            <i className="fas fa-search hotels-icon"></i>
           </div>
         </div>
       </div>
@@ -45,4 +45,4 @@ function Travels() {
   );
 }
 
-export default Travels;
+export default Hotels;

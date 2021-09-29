@@ -52,9 +52,9 @@ function Flights() {
         </div>
         <div className="form-row mt-3">
           <div className="col text-center">
-            <button type="button" className="flight-btn">
+            <button type="button" className="flights-btn">
               Search flights
-              <i className="fas fa-arrow-circle-right arrow-right px-2"></i>
+              <i className="fas fa-arrow-circle-right px-2"></i>
             </button>
           </div>
         </div>
