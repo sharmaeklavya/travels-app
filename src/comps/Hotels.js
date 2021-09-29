@@ -30,14 +30,16 @@ function Hotels() {
       </div>
       <div className="form-row mt-3">
         <div className="col">
-          <div className="search-city">
+          <div className="search-box">
+            <button type="button" className="search-btn">
+              <i className="fas fa-search"></i>
+            </button>
             <input
-              id="search-city"
+              id="input-search"
               type="search"
               className="form-control"
               placeholder="Search your destination"
             />
-            <i className="fas fa-search hotels-icon"></i>
           </div>
         </div>
       </div>

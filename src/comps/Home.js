@@ -8,6 +8,8 @@ import HotelsCity from "./HotelsCity";
 import Tourists from "./Tourists";
 
 function Home() {
+  //
+
   return (
     <>
       <Topbar />

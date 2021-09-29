@@ -13,7 +13,10 @@ function HotelsCity() {
         {cities
           .filter((i) => i.id > 9 && i.id <= 18)
           .map((i) => (
-            <div className="col-12 col-md-6 col-lg-4 section-two-vessel">
+            <div
+              key={i.id}
+              className="col-12 col-md-6 col-lg-4 section-two-vessel"
+            >
               <img className="section-two-img" src={i.image} alt={i.city} />
               <div className="section-two-text">
                 <p className="caption-title">{i.city}</p>

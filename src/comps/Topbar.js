@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import Currency from "./Currency";
 
 function Topbar() {
@@ -15,7 +14,10 @@ function Topbar() {
 
   useEffect(() => {
     if (currency.name === null || currency.code === null)
-      setCurrency({ name: "Indian Rupee", code: "INR" });
+      setCurrency({
+        name: window.geoplugin_countryName(),
+        code: window.geoplugin_currencyCode(),
+      });
   }, [currency]);
 
   return (
