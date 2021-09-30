@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Currency from "./Currency";
-import axios from "axios";
 
 function Topbar() {
   const [currency, setCurrency] = useState({
@@ -19,12 +18,13 @@ function Topbar() {
   }, [currency]);
 
   useEffect(() => {
-    axios
-      .get("https://countryapi.gear.host/v1/Country/getCountries", {
-        withCredentials: true,
-      })
-      .then((res) => console.log(res.data))
-      .catch((res) => console.log(res.response));
+    let aScript = document.createElement("script");
+    aScript.type = "text/javascript";
+    aScript.src = "https://www.geoplugin.net/javascript.gp";
+    document.head.appendChild(aScript);
+    aScript.onload = function () {
+      console.log(window.geoplugin_city());
+    };
   }, []);
 
   return (
