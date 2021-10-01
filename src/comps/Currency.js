@@ -12,7 +12,6 @@ function Currency(props) {
           name: e.target.options[e.target.selectedIndex].text,
           code: e.target.value,
         });
-
         localStorage.setItem(
           "currencyName",
           e.target.options[e.target.selectedIndex].text

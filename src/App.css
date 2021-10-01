@@ -111,10 +111,45 @@ html {
   }
 }
 
-input[type="search"],
+#input-origin,
+#input-destination,
 input[type="date"] {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  background: var(--tertiary-color);
+}
+
+.form-row {
+  position: relative;
+}
+
+#autocomplete-origin,
+#autocomplete-destination {
+  position: absolute;
+  top: 9rem;
+  width: 100%;
+  height: 14rem;
+  overflow: hidden;
+  overflow-y: auto;
+  border-radius: 10px;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+#autocomplete-destination {
+  position: absolute;
+  top: 9rem;
+  left: 16rem;
+}
+
+.autocomplete-search {
+  list-style: none;
+  padding: var(--btn-padding);
+  border-bottom: 2px solid lightgray;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color);
+  cursor: pointer;
+  box-shadow: 0 25px 50px -12px rgba(161, 146, 146, 0.25);
 }
 
 .flights-btn {

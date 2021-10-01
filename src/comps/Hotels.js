@@ -1,6 +1,7 @@
 import React from "react";
 
 function Hotels() {
+  //
   return (
     <form className="section-one-form">
       <div className="form-row justify-content-center">

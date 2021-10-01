@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Currency from "./Currency";
+import axios from "axios";
 
 function Topbar() {
   const [currency, setCurrency] = useState({
@@ -13,19 +14,22 @@ function Topbar() {
   };
 
   useEffect(() => {
-    if (currency.name === null || currency.code === null)
-      setCurrency({ name: "Indian Rupee", code: "INR" });
+    if (!localStorage.getItem("currencyName"))
+      axios
+        .get
+        // "https://api.ipdata.co?api-key=77204ed149af85f903b75ca185f132bff0e07da1e75b9af897112b3d"
+        ()
+        .then((res) => {
+          setCurrency({
+            name: res.data.currency.name,
+            code: res.data.currency.code,
+          });
+          console.log(res.data);
+          localStorage.setItem("currencyName", res.data.currency.name);
+          localStorage.setItem("currencyCode", res.data.currency.code);
+        })
+        .catch((res) => console.log(res.response));
   }, [currency]);
-
-  useEffect(() => {
-    let aScript = document.createElement("script");
-    aScript.type = "text/javascript";
-    aScript.src = "https://www.geoplugin.net/javascript.gp";
-    document.head.appendChild(aScript);
-    aScript.onload = function () {
-      console.log(window.geoplugin_city());
-    };
-  }, []);
 
   return (
     <>

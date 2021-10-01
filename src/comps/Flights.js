@@ -1,6 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import flightData from "./IataData.json";
+import axios from "axios";
 
 function Flights() {
+  const [departureList, setDepartureList] = useState([]);
+  const [arrivalList, setArrivalList] = useState([]);
+  const [departureResult, setDepartureResult] = useState({
+    code: "",
+    name: "",
+  });
+  const [arrivalResult, setArrivalResult] = useState({ code: "", name: "" });
+
+  const suggestedOriginCity = ({ municipality, iata_code }) => {
+    setDepartureResult({ name: municipality + " ", code: iata_code });
+    setDepartureList([]);
+  };
+
+  const suggestedDestinationCity = ({ municipality, iata_code }) => {
+    setArrivalResult({ name: municipality + " ", code: iata_code });
+    setArrivalList([]);
+  };
+
+  const inputFlyingOrigin = (e) => {
+    const value = e.target.value;
+    setDepartureResult({ code: "", name: value });
+
+    if (value !== "") {
+      setDepartureList(airportData(value));
+    } else {
+      setDepartureList([]);
+    }
+  };
+
+  const inputFlyingDestination = (e) => {
+    const value = e.target.value;
+    setArrivalResult({ code: "", name: value });
+
+    if (value !== "") {
+      setArrivalList(airportData(value));
+    } else {
+      setArrivalList([]);
+    }
+  };
+
+  const airportData = (value) => {
+    const cities = flightData.filter((city) => {
+      let result = "";
+      if (city.municipality !== null) {
+        const inputValue = value.toLowerCase();
+        const municipality = city.municipality.toLowerCase();
+        result = municipality.includes(inputValue);
+      }
+      return result;
+    });
+    return cities;
+  };
+
+  useEffect(() => {
+    const currency = localStorage.getItem("currencyCode");
+    axios
+      .get(
+        `https://api.travelpayouts.com/v2/prices/month-matrix?currency=${currency}&origin=${arrivalResult.name}&destination=${departureResult.name}&show_to_affiliates=true&token=579e4e0ae2c0f36024f0bbd95821c8f1`
+      )
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err.response));
+  }, [arrivalResult.name, departureResult.name]);
+
   return (
     <>
       <form className="section-one-form">
@@ -14,21 +79,25 @@ function Flights() {
             </h1>
           </div>
           <div className="col-12 col-sm-6 col-lg-3 mb-1">
-            <label htmlFor="origin">From</label>
+            <label htmlFor="input-origin">From</label>
             <input
-              id="origin"
+              id="input-origin"
               type="search"
+              value={`${departureResult.name}${departureResult.code}`}
               className="form-control"
-              placeholder="Country, city origin"
+              placeholder="City Origin"
+              onChange={inputFlyingOrigin}
             />
           </div>
           <div className="col-12 col-sm-6 col-lg-3 mb-1">
-            <label htmlFor="destination">Going to</label>
+            <label htmlFor="input-destination">Going to</label>
             <input
-              id="destination"
+              id="input-destination"
               type="search"
+              value={`${arrivalResult.name}${arrivalResult.code}`}
               className="form-control"
-              placeholder="Country, city destination"
+              placeholder="City Destination"
+              onChange={inputFlyingDestination}
             />
           </div>
           <div className="col-12 col-sm-6 col-lg-3 mb-1">
@@ -49,7 +118,42 @@ function Flights() {
               placeholder="Arrival date"
             />
           </div>
+          <div
+            id="autocomplete-origin"
+            className="col-12 col-sm-6 col-lg-3 mb-1"
+          >
+            {departureList
+              .filter((city) => city.iata_code !== null)
+              .map((city, i) => (
+                <li
+                  key={i}
+                  className="autocomplete-search"
+                  onClick={() => suggestedOriginCity(city)}
+                >
+                  <span className="px-2">{city.iata_code}</span>
+                  <span className="px-2">{city.municipality}</span>
+                </li>
+              ))}
+          </div>
+          <div
+            id="autocomplete-destination"
+            className="col-12 col-sm-6 col-lg-3 mb-1"
+          >
+            {arrivalList
+              .filter((city) => city.iata_code !== null)
+              .map((city, i) => (
+                <li
+                  key={i}
+                  className="autocomplete-search"
+                  onClick={() => suggestedDestinationCity(city)}
+                >
+                  <span className="px-2">{city.iata_code}</span>
+                  <span className="px-2">{city.municipality}</span>
+                </li>
+              ))}
+          </div>
         </div>
+
         <div className="form-row mt-3">
           <div className="col text-center">
             <button type="button" className="flights-btn">
