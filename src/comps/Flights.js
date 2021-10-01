@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import flightData from "./IataData.json";
 import axios from "axios";
 
@@ -59,7 +59,15 @@ function Flights() {
   const produceResults = () => {
     const currency = localStorage.getItem("currencyCode");
     axios
-      .get()
+      .get(
+        `https://api.travelpayouts.com/v2/prices/month-matrix?currency=${currency}&show_to_affiliates=true&origin=${departureResult.name}&destination=${arrivalResult.name}`,
+        {
+          headers: {
+            "x-access-token": "579e4e0ae2c0f36024f0bbd95821c8f1",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.response));
   };
