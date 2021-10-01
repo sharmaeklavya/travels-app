@@ -56,15 +56,13 @@ function Flights() {
     return cities;
   };
 
-  useEffect(() => {
+  const produceResults = () => {
     const currency = localStorage.getItem("currencyCode");
     axios
-      .get(
-        `https://api.travelpayouts.com/v2/prices/month-matrix?currency=${currency}&origin=${arrivalResult.name}&destination=${departureResult.name}&show_to_affiliates=true&token=579e4e0ae2c0f36024f0bbd95821c8f1`
-      )
+      .get()
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.response));
-  }, [arrivalResult.name, departureResult.name]);
+  };
 
   return (
     <>
@@ -156,7 +154,11 @@ function Flights() {
 
         <div className="form-row mt-3">
           <div className="col text-center">
-            <button type="button" className="flights-btn">
+            <button
+              type="button"
+              className="flights-btn"
+              onClick={produceResults}
+            >
               Search flights
               <i className="fas fa-arrow-circle-right px-2"></i>
             </button>
